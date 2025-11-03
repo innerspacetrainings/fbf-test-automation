@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+/*import { test } from '@playwright/test';
 import { LoginPage, ProjectPage, ProcessPage } from '../pages';
 
 test.describe.configure({ mode: 'serial' });
@@ -24,7 +24,7 @@ test('Login and select project and process',async ({ browser }) => {
   await processPage.selectRandomProcessInProject();
 });
 
-/*test('Select Project', async () => {
+test('Select Project', async () => {
   const projectPage = new ProjectPage(page);
   await projectPage.filterByProject(projectName);
 });
