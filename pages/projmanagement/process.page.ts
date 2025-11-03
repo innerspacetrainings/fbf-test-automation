@@ -24,6 +24,26 @@ async goToProcessesTab() {
     await expect(dropdown).toBeHidden();
   }
 
+  async selectRandomProcessInProject() {
+  await this.page.locator('div').filter({ hasText: /^Choose an option$/ }).first().click();
+  const combo = this.page.getByRole('combobox', { name: 'Select Process' });
+  await combo.click();
+
+  const dropdown = this.page.getByTestId('stSelectboxVirtualDropdown');
+  await expect(dropdown).toBeVisible();
+
+  const options = dropdown.getByRole('option');
+  const count = await options.count();
+
+  const randomIndex = Math.floor(Math.random() * count);
+  const randomOption = options.nth(randomIndex);
+  const processName = await randomOption.innerText();
+  await randomOption.click();
+  await expect(dropdown).toBeHidden();
+
+  return processName;
+  }
+
   async expectSidebarHas(projectName: string, processName: string) {
     const userContent = this.page.getByTestId('stSidebarUserContent');
     await expect(userContent).toContainText(projectName);
