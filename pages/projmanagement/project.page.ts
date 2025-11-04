@@ -21,10 +21,4 @@ export class ProjectPage {
     await this.page.getByRole('combobox').fill(projectName);
     await this.page.getByTestId('stSelectboxVirtualDropdown').getByText(projectName).click();
   }
-  
-  
-  
-  
-  
-
 }
