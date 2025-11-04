@@ -13,7 +13,7 @@ export class CustomerPage {
     await this.page.getByRole('textbox', { name: 'Customer Name' }).fill(customerName);
     await this.page.getByRole('textbox', { name: 'Description' }).click();
     await this.page.getByRole('textbox', { name: 'Description' }).fill(description);
-    await this.page.getByTestId('stBaseButton-primary').click();
+    await this.page.getByTestId('stDialog').getByTestId('stBaseButton-primary').click();
   }
 
 }

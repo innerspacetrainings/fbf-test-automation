@@ -1,4 +1,4 @@
-import { test, Page } from '@playwright/test';
+import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { LoginPage, CustomerPage, ProjectPage, ProcessPage } from '../pages';
 
@@ -8,7 +8,7 @@ const customerName = faker.company.name();
 const projectName  = faker.commerce.productName();
 const processName  = `${faker.word.noun()}-${faker.number.int(999)}`;
 
-let page: Page;
+let page;
 
 test.beforeAll(async ({ browser }) => {
   const context = await browser.newContext();

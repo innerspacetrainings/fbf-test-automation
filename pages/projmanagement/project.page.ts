@@ -13,7 +13,7 @@ export class ProjectPage {
     await this.page.getByRole('textbox', { name: 'Project Name' }).press('Tab');
     await this.page.getByRole('combobox', { name: /Selected .* Customer/ }).fill(customerName);
     await this.page.getByTestId('stSelectboxVirtualDropdown').getByText(customerName).click();
-    await this.page.getByTestId('stBaseButton-primary').click();
+    await this.page.getByTestId('stDialog').getByTestId('stBaseButton-primary').click();
   }
 
   async filterByProject(projectName: string) {
