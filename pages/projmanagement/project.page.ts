@@ -10,10 +10,10 @@ export class ProjectPage {
   async createProject(projectName: string, customerName: string) {
     await this.page.getByRole('button', { name: 'add_circle_outline Create' }).click();
     await this.page.getByRole('textbox', { name: 'Project Name' }).fill(projectName);
-    await this.page.locator('div').filter({ hasText: /^Groninger$/ }).first().click();
-    await this.page.getByRole('combobox', { name: 'Selected Groninger. Customer' }).fill(customerName);
+    await this.page.getByRole('textbox', { name: 'Project Name' }).press('Tab');
+    await this.page.getByRole('combobox', { name: /Selected .* Customer/ }).fill(customerName);
     await this.page.getByTestId('stSelectboxVirtualDropdown').getByText(customerName).click();
-    await this.page.getByTestId('stBaseButton-primary').click();
+    await this.page.getByTestId('stDialog').getByTestId('stBaseButton-primary').click();
   }
 
   async filterByProject(projectName: string) {
@@ -21,5 +21,4 @@ export class ProjectPage {
     await this.page.getByRole('combobox').fill(projectName);
     await this.page.getByTestId('stSelectboxVirtualDropdown').getByText(projectName).click();
   }
-
 }
